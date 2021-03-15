@@ -1,33 +1,13 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
+    <h1>小巴的豐盛日記</h1>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li v-for = "i in items" :key="i">
+        <a @click="read(i)">* {{i}}</a>
+      </li>
     </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div class="d" v-html="d">
+    </div>
   </div>
 </template>
 
@@ -36,24 +16,65 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      d: '',
+      items: ['豐盛日記 20210222(一)', '豐盛日記 20210223(二)', '豐盛日記 20210224(三)', '豐盛日記 20210225(四)', '豐盛日記 20210226(五)', '豐盛日記 20210228(日)', '豐盛日記 20210301(一)', '豐盛日記 20210302(二)', '豐盛日記 20210303(三)', '豐盛日記 20210304(四)', '豐盛日記 20210305(五)', '豐盛日記 20210306(六)', '豐盛日記 20210307(日)', '豐盛日記 20210308(一)', '豐盛日記 20210309(二)', '豐盛日記 20210310(三)', '豐盛日記 20210311(四)', '豐盛日記 20210312(五)', '豐盛日記 20210313(六)', '豐盛日記 20210314(日)', '豐盛日記 20210315(一)']
+    }
+  },
+  methods: {
+    read(k) {
+      this.$http.get('./' + k).then((response) => {
+        // console.log(response.data)
+        this.d = response.data
+      })
+    }
+  },
+  mounted () {
+    this.$http.get('./豐盛日記 20210222(一)').then((response) => {
+      // console.log(response.data)
+      this.d = response.data
+    })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
+
 ul {
-  list-style-type: none;
-  padding: 0;
+  color: black;
+  list-style-type: decimal;
+  padding: 2em;
+  height: 10vmax;
+  width: 33vmax;
+  margin: 1em auto;
+  overflow-y: scroll;
 }
+
 li {
-  display: inline-block;
+  display:list-item;
+  list-style-position:outside;
+  display: block;
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  font-weight: bold;
+  cursor: pointer;
+  color: blue;
 }
+
+div.d {
+  width: 80vw;
+  margin: 0 auto;
+  white-space: pre-line;
+  text-align: left;
+}
+
+div.d::first-line {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
 </style>
