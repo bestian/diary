@@ -85,9 +85,11 @@ a {
 
 div.d {
   width: 80vw;
+  max-width: 680px;
   margin: 0 auto;
   white-space: pre-line;
   text-align: left;
+  font-size: 18px;
 }
 
 div.d::first-line {
