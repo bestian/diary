@@ -115,4 +115,19 @@ div.d::first-line {
   font-weight: bolder;
 }
 
+@media screen and (max-width: 420px) {
+  div.d::first-line {
+    font-size: 1em;
+    font-weight: normal;
+  }
+
+  div.d {
+    width: 85vw;
+  }
+
+  #logo {
+    margin: .5em;
+  }
+}
+
 </style>
