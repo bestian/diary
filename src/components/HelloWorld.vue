@@ -9,6 +9,9 @@
         <a @click="read(i)">* {{i}}</a>
       </li>
     </ul>
+    <router-link to="/about">
+      <img class="living_room" src="../assets/living_room.jpg">
+    </router-link>
     <div class="d" v-html="d">
     </div>
     <a @click="next()">
@@ -59,6 +62,15 @@ export default {
   margin: 2em;
   width: 10vw;
   border-radius: 30px;
+  box-shadow: 0px 5px 5px 0px #9B8F99;
+}
+
+.living_room {
+  width: 30vmin;
+  float: left;
+  border-radius: 50px;
+  margin-left: 15vmin;
+  margin-right: 1em;
 }
 
 ul {
@@ -68,7 +80,9 @@ ul {
   height: 10vmax;
   width: 33vmax;
   margin: 1em auto;
+  background-color: white;
   overflow-y: scroll;
+  box-shadow: 0px 5px 5px 0px #9B8F99;
 }
 
 li {
@@ -84,12 +98,16 @@ a {
 }
 
 div.d {
-  width: 80vw;
+  width: 65vw;
   max-width: 680px;
   margin: 0 auto;
   white-space: pre-line;
   text-align: left;
-  font-size: 18px;
+  font-size: 16px;
+  padding: 1em;
+  background-color: white;
+  box-shadow: 0px 5px 5px 0px #9B8F99;
+
 }
 
 div.d::first-line {
