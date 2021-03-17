@@ -3,7 +3,7 @@
     <a @click="next()">
       <img id ="logo" :src="'./logo.png'"/>
     </a>
-    <h3>小巴的豐盛日記</h3>
+    <h2>小巴的豐盛日記</h2>
     <ul>
       <li v-for = "i in items" :key="i">
         <a @click="read(i)">* {{i}}</a>
@@ -75,22 +75,22 @@ export default {
 
 ul {
   color: black;
-  list-style-type: decimal;
-  padding: 2em;
+  padding: 1em;
   height: 10vmax;
   width: 33vmax;
   margin: 1em auto;
   background-color: white;
   overflow-y: scroll;
   box-shadow: 0px 5px 5px 0px #9B8F99;
+  border-radius: 15px 0 0 15px;
 }
 
 li {
-  display:list-item;
-  list-style-position:outside;
   display: block;
   margin: 0 10px;
+  text-decoration: underline;
 }
+
 a {
   font-weight: bold;
   cursor: pointer;
@@ -107,18 +107,21 @@ div.d {
   padding: 1em;
   background-color: white;
   box-shadow: 0px 5px 5px 0px #9B8F99;
+  border-radius: 15px;
+  line-height: 2;
 
 }
 
 div.d::first-line {
+  color: blue;
   font-size: 2em;
   font-weight: bolder;
 }
 
 @media screen and (max-width: 420px) {
   div.d::first-line {
+    color: blue;
     font-size: 1em;
-    font-weight: normal;
   }
 
   div.d {
